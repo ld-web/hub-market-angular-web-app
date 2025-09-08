@@ -1,59 +1,127 @@
-# HubMarketAngularWebApp
+# Hub Market — Projet Angular (Standalone, Tailwind, Auth JWT, Panier)
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.6.
+E-commerce de révision couvrant les notions vues en cours : **routing avec layouts**, **composants standalone**, **nouvelle syntaxe de contrôle Angular** (`@if`, `@for`), **Reactive Forms**, **interceptors/guards**, **state léger via RxJS + signals**, **Tailwind CSS**.
 
-## Development server
+---
 
-To start a local development server, run:
+## Sommaire
+
+- [Hub Market — Projet Angular (Standalone, Tailwind, Auth JWT, Panier)](#hub-market--projet-angular-standalone-tailwind-auth-jwt-panier)
+  - [Sommaire](#sommaire)
+  - [Stack \& prérequis](#stack--prérequis)
+  - [Structure des dossiers](#structure-des-dossiers)
+  - [Démarrage rapide](#démarrage-rapide)
+  - [Configuration (API, Tailwind)](#configuration-api-tailwind)
+    - [API](#api)
+    - [Tailwind (rappel)](#tailwind-rappel)
+  - [Routing \& Layouts](#routing--layouts)
+
+---
+
+## Stack & prérequis
+
+- **Angular 17+** (composants **standalone** & **built-in control flow** `@if`, `@for`)
+- **TypeScript**
+- **Tailwind CSS**
+- **Node.js 18+**  
+- Backend **JWT** prêt : `https://node-eemi.vercel.app`  
+  Endpoints utilisés : `/auth/register`, `/auth/login`, `/auth/me`
+
+---
+
+## Structure des dossiers
+
+```
+src/app/
+├── app.routes.ts
+├── layouts/
+│   ├── shop-layout/
+│   │   ├── components/
+│   │   │   ├── shop-header/
+│   │   │   └── shop-footer/ (optionnel)
+│   │   ├── shop-layout.component.ts/html/scss
+│   ├── auth-layout/
+│   │   ├── components/
+│   │   │   └── auth-header/ (optionnel)
+│   │   └── auth-layout.component.ts/html/scss
+│   └── checkout-layout/
+│       ├── components/
+│       │   └── checkout-summary/ (optionnel)
+│       └── checkout-layout.component.ts/html/scss
+├── services/
+│   └── cart.service.ts
+├── models/
+│   ├── product.ts
+│   └── user.ts
+├── features/
+│   ├── shop/
+│   │   ├── shop.routes.ts
+│   │   ├── home/ (liste produits)
+│   │   └── product-detail/
+│   ├── auth/
+│   │   ├── auth.routes.ts
+│   │   ├── login/
+│   │   ├── register/
+│   │   ├── services/auth.service.ts
+│   │   ├── interceptors/auth.interceptor.ts
+│   │   └── guards/auth.guard.ts
+│   └── checkout/
+│       ├── checkout.routes.ts
+│       ├── cart/
+│       └── components/
+│           └── cart-item/
+└── ...
+```
+
+---
+
+## Démarrage rapide
 
 ```bash
+# 1) Installer les deps
+npm i
+
+# 2) Lancer l'app en dev
+npm run start
+# ou
 ng serve
-```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
+# 3) Build prod
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+> L’API Node (JWT) est hébergée : `https://node-eemi.vercel.app`.  
+> Aucun setup backend requis, mais vérifiez la connectivité réseau.
 
-## Running unit tests
+---
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## Configuration (API, Tailwind)
 
-```bash
-ng test
+### API
+Le projet référence l’API directement dans le `AuthService` via :
+```ts
+const API_URL = 'https://node-eemi.vercel.app';
+```
+> Option recommandé : centraliser dans un `environment.ts` ou un token d’injection si vous préférez.
+
+### Tailwind (rappel)
+- `tailwind.config.js` :
+```js
+module.exports = {
+  content: ["./src/**/*.{html,ts}"],
+  theme: { extend: {} },
+  plugins: [],
+};
+```
+- `src/styles.css` :
+```css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 ```
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Routing & Layouts
 
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+(... contenu complet déjà produit ...)
