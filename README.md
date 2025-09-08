@@ -14,7 +14,6 @@ E-commerce de révision couvrant les notions vues en cours : **routing avec layo
   - [Configuration (API, Tailwind)](#configuration-api-tailwind)
     - [API](#api)
     - [Tailwind (rappel)](#tailwind-rappel)
-  - [Routing \& Layouts](#routing--layouts)
 
 ---
 
@@ -122,6 +121,46 @@ module.exports = {
 
 ---
 
-## Routing & Layouts
+Shop (home, produit)
 
-(... contenu complet déjà produit ...)
+HomeComponent : liste de produits (intègre @for + ProductCard si vous en avez un sous shared/ui).
+
+ProductDetailComponent : page détail (/product/:id) ; peut consommer un service ProductsService (non détaillé ici) et offrir un bouton Ajouter au panier → CartService.add(product).
+
+Conventions & bonnes pratiques
+
+Layouts à la racine (/layouts) : co-localiser leurs components (header/footer spécifiques).
+
+Shared vs Feature-scoped :
+
+UI réutilisable partout → shared/ui/*
+
+Composants réutilisables dans une feature → features/<feature>/components/*
+
+Sections spécifiques d’une page → features/<feature>/<page>/sections/*
+
+Pages “smart” (chargent données, orchestrent), Sections/UI “dumb” (Inputs/Outputs uniquement).
+
+Security : JWT stocké dans localStorage; AuthInterceptor injecte Authorization: Bearer.
+
+Guards : authGuard protège /cart.
+
+Nouvelle syntaxe : privilégier @if, @for, @switch aux anciennes directives structurelles.
+
+Signals : convertir les streams avec toSignal pour simplifier les templates modernes.
+
+Améliorations futures
+
+Redirection post-login vers l’URL initialement demandée (stocker la cible dans querystring ou state).
+
+Refresh token / expiration proactive (interceptor qui détecte 401 et tente un refresh).
+
+Gestion des quantités dans le panier (plusieurs exemplaires du même produit).
+
+Persistence du panier (LocalStorage) + synchro serveur authentifié.
+
+Loader/Toasts globaux pour feedback UX (HTTP en cours, succès/erreur).
+
+SEO : TitleStrategy dynamique (ex. nom du produit dans /product/:id).
+
+Tests unitaires sur services/guards & tests de composant avec TestBed.
