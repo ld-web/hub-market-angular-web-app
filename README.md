@@ -9,7 +9,6 @@ E-commerce de révision couvrant les notions vues en cours : **routing avec layo
 - [Hub Market — Projet Angular (Standalone, Tailwind, Auth JWT, Panier)](#hub-market--projet-angular-standalone-tailwind-auth-jwt-panier)
   - [Sommaire](#sommaire)
   - [Stack \& prérequis](#stack--prérequis)
-  - [Structure des dossiers](#structure-des-dossiers)
   - [Démarrage rapide](#démarrage-rapide)
   - [Configuration (API, Tailwind)](#configuration-api-tailwind)
     - [API](#api)
@@ -28,51 +27,7 @@ E-commerce de révision couvrant les notions vues en cours : **routing avec layo
 
 ---
 
-## Structure des dossiers
 
-```
-src/app/
-├── app.routes.ts
-├── layouts/
-│   ├── shop-layout/
-│   │   ├── components/
-│   │   │   ├── shop-header/
-│   │   │   └── shop-footer/ (optionnel)
-│   │   ├── shop-layout.component.ts/html/scss
-│   ├── auth-layout/
-│   │   ├── components/
-│   │   │   └── auth-header/ (optionnel)
-│   │   └── auth-layout.component.ts/html/scss
-│   └── checkout-layout/
-│       ├── components/
-│       │   └── checkout-summary/ (optionnel)
-│       └── checkout-layout.component.ts/html/scss
-├── services/
-│   └── cart.service.ts
-├── models/
-│   ├── product.ts
-│   └── user.ts
-├── features/
-│   ├── shop/
-│   │   ├── shop.routes.ts
-│   │   ├── home/ (liste produits)
-│   │   └── product-detail/
-│   ├── auth/
-│   │   ├── auth.routes.ts
-│   │   ├── login/
-│   │   ├── register/
-│   │   ├── services/auth.service.ts
-│   │   ├── interceptors/auth.interceptor.ts
-│   │   └── guards/auth.guard.ts
-│   └── checkout/
-│       ├── checkout.routes.ts
-│       ├── cart/
-│       └── components/
-│           └── cart-item/
-└── ...
-```
-
----
 
 ## Démarrage rapide
 
