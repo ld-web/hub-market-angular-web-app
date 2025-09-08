@@ -1,0 +1,4 @@
+@layer components {
+  /* Exemple : surligner le lien actif avec un petit underline */
+  .nav-active { @apply underline decoration-2 underline-offset-4; }
+}

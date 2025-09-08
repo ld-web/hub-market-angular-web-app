@@ -1,0 +1,10 @@
+<article class="card">
+  @if (title) {
+    <header class="card-body border-b border-slate-100">
+      <h3 class="card-title">{{ title }}</h3>
+    </header>
+  }
+  <div class="card-body">
+    <ng-content />
+  </div>
+</article>

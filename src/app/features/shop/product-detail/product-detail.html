@@ -1,0 +1,56 @@
+<a routerLink="/hub" class="inline-flex items-center gap-2 text-sm text-blue-600 hover:underline mb-4">
+  ← Retour
+</a>
+
+<!-- États gérés avec la nouvelle syntaxe -->
+@if (product() === undefined) {
+  <!-- Loading -->
+  <div class="animate-pulse">
+    <div class="h-6 w-48 bg-gray-200 rounded mb-3"></div>
+    <div class="h-4 w-72 bg-gray-200 rounded mb-2"></div>
+    <div class="h-4 w-64 bg-gray-200 rounded"></div>
+  </div>
+} @else {
+  @if (product() === null) {
+    <!-- Not found -->
+    <div class="p-4 rounded border border-red-200 bg-red-50 text-red-700">
+      Produit introuvable.
+    </div>
+  } @else {
+    <!-- Success -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div class="border rounded-xl p-4">
+        <img
+          [src]="product()?.image"
+          width="600"
+          height="600"
+          alt="{{ product()!.title }}"
+          class="w-full h-auto object-contain rounded-lg"
+        />
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <h1 class="text-2xl font-semibold">{{ product()!.title }}</h1>
+        <p class="text-gray-600">{{ product()!.description }}</p>
+
+        <div class="text-xl font-bold">
+          {{ product()!.price | currency:'EUR' }}
+        </div>
+
+        <div class="flex gap-3">
+          <button
+            class="px-4 py-2 rounded-lg bg-blue-600 text-white hover:bg-blue-700"
+            (click)="addToCart(product()!)">
+            Ajouter au panier
+          </button>
+
+          <a
+            routerLink="/hub"
+            class="px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50">
+            Continuer vos achats
+          </a>
+        </div>
+      </div>
+    </section>
+  }
+}

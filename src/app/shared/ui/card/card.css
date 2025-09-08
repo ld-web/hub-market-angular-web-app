@@ -1,0 +1,4 @@
+/* Exemple d’ajout local : card dense */
+@layer components {
+  .card-dense .card-body { @apply p-4; }
+}

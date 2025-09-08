@@ -1,0 +1,16 @@
+<div
+class="flex flex-col gap-6 w-full"
+>
+<app-hero/>
+
+<app-filter-section
+[likedCount]="likedCount"
+[categories] = 'categories'
+[availableChecked]="onlyAvailable"
+(availableCheckedChange)="onOnlyAvailableChange($event)"
+/>
+<app-product-list
+[products]="filteredProducts"
+ (likedToggled)="onLikedToggled($event)"
+/>
+</div>

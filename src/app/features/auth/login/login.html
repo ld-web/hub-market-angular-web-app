@@ -1,0 +1,53 @@
+<section class="space-y-6 w-11/12 mx-auto max-w-lg">
+  <h1 class="text-2xl font-bold">Connexion</h1>
+
+  @if (errorMsg) {
+    <div class="p-3 rounded-md bg-red-50 text-red-700 text-sm">{{ errorMsg }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+    <!-- email -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="w-full rounded-md border p-2 focus:outline-none focus:ring"
+        placeholder="vous@exemple.com" />
+      @if (f.email.touched && f.email.invalid) {
+        <p class="text-xs text-red-600 mt-1">
+          @if (f.email.errors?.['required']) { Email requis. }
+          @else if (f.email.errors?.['email']) { Format d'email invalide. }
+        </p>
+      }
+    </div>
+
+    <!-- password -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Mot de passe</label>
+      <input
+        type="password"
+        formControlName="password"
+        class="w-full rounded-md border p-2 focus:outline-none focus:ring"
+        placeholder="••••••••" />
+      @if (f.password.touched && f.password.invalid) {
+        <p class="text-xs text-red-600 mt-1">
+          @if (f.password.errors?.['required']) { Mot de passe requis. }
+          @else if (f.password.errors?.['minlength']) { 6 caractères minimum. }
+        </p>
+      }
+    </div>
+
+    <button
+      type="submit"
+      class="w-full rounded-md bg-black text-white py-2 hover:opacity-90 disabled:opacity-50"
+      [disabled]="form.invalid">
+      Se connecter
+    </button>
+  </form>
+
+  <p class="text-sm text-gray-600">
+    Pas de compte ?
+    <a routerLink="/register" class="underline">Créer un compte</a>
+  </p>
+</section>

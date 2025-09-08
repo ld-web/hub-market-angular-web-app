@@ -1,0 +1,10 @@
+.cart-badge {
+    background: #222;
+    color: white;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    font-weight: bold;
+    display: inline-block;
+    min-width: 40px;
+    text-align: center;
+}

@@ -1,0 +1,27 @@
+<header class="sticky top-0 z-10 border-b border-slate-200 bg-black/80 backdrop-blur text-white">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+    <a routerLink="/" class="text-lg font-semibold uppercase">Hub Market</a>
+    <div class="flex gap-3">
+      <!-- Auth -->
+      @if (!isAuth()) {
+      <div class="flex items-center gap-3 text-sm">
+        <a routerLink="/login" class="hover:underline">Connexion</a>
+        <a routerLink="/register" class="hover:underline">Inscription</a>
+      </div>
+      } @else {
+      <div class="relative flex gap-2">
+        <button type="button"
+          class="w-9 h-9 rounded-full bg-gray-800 text-white flex items-center justify-center font-bold">
+          {{ initial() }}
+        </button>
+        <!-- Logout -->
+        <button (click)="logout()" class="text-sm px-3 py-1.5 rounded-md border hover:opacity-50 text-xs opacity-80">
+          Déconnexion
+        </button>
+
+      </div>
+      }
+      <app-nav />
+    </div>
+  </div>
+</header>

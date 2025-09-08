@@ -1,0 +1,86 @@
+<section class="space-y-6 w-11/12 mx-auto max-w-lg">
+  <h1 class="text-2xl font-bold">Inscription</h1>
+
+  @if (errorMsg) {
+    <div class="p-3 rounded-md bg-red-50 text-red-700 text-sm">{{ errorMsg }}</div>
+  }
+
+  <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
+    <!-- name -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Nom</label>
+      <input
+        type="text"
+        formControlName="name"
+        class="w-full rounded-md border p-2 focus:outline-none focus:ring"
+        placeholder="Votre nom" />
+      @if (name.touched && name.invalid) {
+        <p class="text-xs text-red-600 mt-1">
+          @if (name.errors?.['required']) { Nom requis. }
+          @else if (name.errors?.['minlength']) { 2 caractères minimum. }
+        </p>
+      }
+    </div>
+
+    <!-- email -->
+    <div>
+      <label class="block text-sm font-medium mb-1">Email</label>
+      <input
+        type="email"
+        formControlName="email"
+        class="w-full rounded-md border p-2 focus:outline-none focus:ring"
+        placeholder="vous@exemple.com" />
+      @if (email.touched && email.invalid) {
+        <p class="text-xs text-red-600 mt-1">
+          @if (email.errors?.['required']) { Email requis. }
+          @else if (email.errors?.['email']) { Format d'email invalide. }
+        </p>
+      }
+    </div>
+
+    <!-- passwords -->
+    <div formGroupName="passwordGroup" class="grid gap-4 md:grid-cols-2">
+      <div>
+        <label class="block text-sm font-medium mb-1">Mot de passe</label>
+        <input
+          type="password"
+          formControlName="password"
+          class="w-full rounded-md border p-2 focus:outline-none focus:ring"
+          placeholder="••••••••" />
+        @if (password?.touched && password?.invalid) {
+          <p class="text-xs text-red-600 mt-1">
+            @if (password?.errors?.['required']) { Mot de passe requis. }
+            @else if (password?.errors?.['minlength']) { 6 caractères minimum. }
+          </p>
+        }
+      </div>
+
+      <div>
+        <label class="block text-sm font-medium mb-1">Confirmer le mot de passe</label>
+        <input
+          type="password"
+          formControlName="confirmPassword"
+          class="w-full rounded-md border p-2 focus:outline-none focus:ring"
+          placeholder="••••••••" />
+        @if (confirmPassword?.touched && (confirmPassword?.invalid || passwordGroup?.errors?.['mismatch'])) {
+          <p class="text-xs text-red-600 mt-1">
+            @if (confirmPassword?.errors?.['required']) { Confirmation requise. }
+            @else if (passwordGroup?.errors?.['mismatch']) { Les mots de passe ne correspondent pas. }
+          </p>
+        }
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="w-full rounded-md bg-black text-white py-2 hover:opacity-90 disabled:opacity-50"
+      [disabled]="form.invalid">
+      Créer mon compte
+    </button>
+  </form>
+
+  <p class="text-sm text-gray-600">
+    Déjà un compte ?
+    <a routerLink="/login" class="underline">Se connecter</a>
+  </p>
+</section>

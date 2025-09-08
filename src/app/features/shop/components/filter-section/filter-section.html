@@ -1,0 +1,28 @@
+<div class="flex justify-between gap-2">
+    <div class="flex gap-1">
+        <span>
+            Total likes:
+        </span>
+        <span>{{likedCount}}</span>
+    </div>
+
+    <label class="inline-flex items-center gap-2 select-none">
+        <input
+          type="checkbox"
+          [checked]="availableChecked"
+          (change)="onAvailableCheckedChange($event)"
+        />
+        <span>Seulement disponibles</span>
+      </label>
+
+    <ul class="flex gap-2 items-center">
+        @for(category of categories; track $index){
+        <li>
+            <button class="bg-black justify-center cursor-pointer text-white 
+    rounded-full py-1 px-3 capitalize text-sm hover:opacity-80">
+                {{category}}
+            </button>
+        </li>
+        }
+    </ul>
+</div>

@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+html, body {
+    font-family: 'Inter';
+}
+
+/* Composants globaux via @layer */
+@layer components {
+  /* Boutons */
+  .btn { @apply inline-flex items-center justify-center rounded-xl border px-4 py-2 text-sm font-medium transition-colors;
+         @apply border-slate-300 bg-white text-slate-900 hover:bg-slate-50; }
+  .btn-primary { @apply border-transparent bg-indigo-600 text-white hover:bg-indigo-700; }
+  .btn-ghost { @apply border-transparent bg-transparent hover:bg-slate-100; }
+
+  /* Card */
+  .card { @apply rounded-2xl border border-slate-200 bg-white shadow-sm; }
+  .card-body { @apply p-4 sm:p-6; }
+  .card-title { @apply text-base font-semibold text-slate-900; }
+
+  /* Badge */
+  .badge { @apply inline-flex items-center rounded-full border px-2 py-0.5 text-xs font-medium; }
+  .badge-neutral { @apply border-slate-200 bg-slate-100 text-slate-700; }
+  .badge-warning { @apply border-amber-200 bg-amber-100 text-amber-800; }
+  .badge-danger  { @apply border-rose-200 bg-rose-100 text-rose-800; }
+}
+
+/* Style global léger */
+:root { color-scheme: light; }
+body { @apply bg-slate-50 text-slate-900; }
