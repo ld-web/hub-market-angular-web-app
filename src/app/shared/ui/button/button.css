@@ -1,3 +1,7 @@
+@reference "tailwindcss";
+
 @layer components {
-  .btn-icon { @apply inline-flex gap-2; }
+  .btn-icon {
+    @apply inline-flex gap-2;
+  }
 }

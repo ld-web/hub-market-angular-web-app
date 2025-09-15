@@ -2,22 +2,24 @@
 <article class="w-full border rounded-xl p-3 md:p-4 flex gap-3 md:gap-4">
   <!-- image -->
   <div class="w-20 h-20 md:w-24 md:h-24 shrink-0 overflow-hidden rounded-md bg-gray-100">
-    @if (product?.image) {
-      <img [src]="product.image" [alt]="product?.title || 'Produit'" class="w-full h-full object-cover" />
+    @if (product.image) {
+    <img
+      [src]="product.image"
+      [alt]="product.title || 'Produit'"
+      class="w-full h-full object-cover"
+    />
     } @else {
-      <div class="w-full h-full grid place-items-center text-gray-400 text-xs">
-        Pas d’image
-      </div>
+    <div class="w-full h-full grid place-items-center text-gray-400 text-xs">Pas d’image</div>
     }
   </div>
 
   <!-- infos -->
   <div class="flex-1 min-w-0">
-    <h3 class="font-medium truncate">{{ product?.title }}</h3>
-    @if (product?.description) {
-      <p class="text-sm text-gray-500 line-clamp-2">{{ product.description }}</p>
+    <h3 class="font-medium truncate">{{ product.title }}</h3>
+    @if (product.description) {
+    <p class="text-sm text-gray-500 line-clamp-2">{{ product.description }}</p>
     }
-    <div class="mt-2 font-semibold">{{ product?.price | currency:'EUR' }}</div>
+    <div class="mt-2 font-semibold">{{ product.price | currency : 'EUR' }}</div>
   </div>
 
   <!-- actions -->
@@ -25,7 +27,8 @@
     <button
       type="button"
       class="px-3 py-1.5 rounded-md border text-sm hover:bg-gray-50"
-      (click)="onRemove()">
+      (click)="onRemove()"
+    >
       Supprimer
     </button>
   </div>

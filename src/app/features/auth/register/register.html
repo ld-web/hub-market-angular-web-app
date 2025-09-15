@@ -2,7 +2,7 @@
   <h1 class="text-2xl font-bold">Inscription</h1>
 
   @if (errorMsg) {
-    <div class="p-3 rounded-md bg-red-50 text-red-700 text-sm">{{ errorMsg }}</div>
+  <div class="p-3 rounded-md bg-red-50 text-red-700 text-sm">{{ errorMsg }}</div>
   }
 
   <form [formGroup]="form" (ngSubmit)="submit()" class="space-y-4">
@@ -13,12 +13,13 @@
         type="text"
         formControlName="name"
         class="w-full rounded-md border p-2 focus:outline-none focus:ring"
-        placeholder="Votre nom" />
+        placeholder="Votre nom"
+      />
       @if (name.touched && name.invalid) {
-        <p class="text-xs text-red-600 mt-1">
-          @if (name.errors?.['required']) { Nom requis. }
-          @else if (name.errors?.['minlength']) { 2 caractères minimum. }
-        </p>
+      <p class="text-xs text-red-600 mt-1">
+        @if (name.errors?.['required']) { Nom requis. } @else if (name.errors?.['minlength']) { 2
+        caractères minimum. }
+      </p>
       }
     </div>
 
@@ -29,12 +30,13 @@
         type="email"
         formControlName="email"
         class="w-full rounded-md border p-2 focus:outline-none focus:ring"
-        placeholder="vous@exemple.com" />
+        placeholder="vous@exemple.com"
+      />
       @if (email.touched && email.invalid) {
-        <p class="text-xs text-red-600 mt-1">
-          @if (email.errors?.['required']) { Email requis. }
-          @else if (email.errors?.['email']) { Format d'email invalide. }
-        </p>
+      <p class="text-xs text-red-600 mt-1">
+        @if (email.errors?.['required']) { Email requis. } @else if (email.errors?.['email']) {
+        Format d'email invalide. }
+      </p>
       }
     </div>
 
@@ -46,12 +48,13 @@
           type="password"
           formControlName="password"
           class="w-full rounded-md border p-2 focus:outline-none focus:ring"
-          placeholder="••••••••" />
+          placeholder="••••••••"
+        />
         @if (password?.touched && password?.invalid) {
-          <p class="text-xs text-red-600 mt-1">
-            @if (password?.errors?.['required']) { Mot de passe requis. }
-            @else if (password?.errors?.['minlength']) { 6 caractères minimum. }
-          </p>
+        <p class="text-xs text-red-600 mt-1">
+          @if (password?.errors?.['required']) { Mot de passe requis. } @else if
+          (password?.errors?.['minlength']) { 6 caractères minimum. }
+        </p>
         }
       </div>
 
@@ -61,12 +64,14 @@
           type="password"
           formControlName="confirmPassword"
           class="w-full rounded-md border p-2 focus:outline-none focus:ring"
-          placeholder="••••••••" />
-        @if (confirmPassword?.touched && (confirmPassword?.invalid || passwordGroup?.errors?.['mismatch'])) {
-          <p class="text-xs text-red-600 mt-1">
-            @if (confirmPassword?.errors?.['required']) { Confirmation requise. }
-            @else if (passwordGroup?.errors?.['mismatch']) { Les mots de passe ne correspondent pas. }
-          </p>
+          placeholder="••••••••"
+        />
+        @if (confirmPassword?.touched && (confirmPassword?.invalid ||
+        passwordGroup.errors?.['mismatch'])) {
+        <p class="text-xs text-red-600 mt-1">
+          @if (confirmPassword?.errors?.['required']) { Confirmation requise. } @else if
+          (passwordGroup.errors?.['mismatch']) { Les mots de passe ne correspondent pas. }
+        </p>
         }
       </div>
     </div>
@@ -74,7 +79,8 @@
     <button
       type="submit"
       class="w-full rounded-md bg-black text-white py-2 hover:opacity-90 disabled:opacity-50"
-      [disabled]="form.invalid">
+      [disabled]="form.invalid"
+    >
       Créer mon compte
     </button>
   </form>
